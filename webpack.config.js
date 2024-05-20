@@ -5,7 +5,8 @@ module.exports = {
     entry: {
         app: './src/index.js',
     },
-    mode: 'development',
+    mode: 'production',
+    target: 'web',
     plugins: [
         new HtmlWebpackPlugin({
             title: 'WebpackPlugin',
@@ -26,4 +27,7 @@ module.exports = {
             },
         ],
     },
+    devServer: {
+        watchFiles: ['src/*']
+    }
 };
