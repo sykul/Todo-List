@@ -1,6 +1,8 @@
 /*  title, description, dueDate, priority, notes, done */
 import './style.css';
 import 'date-fns';
-import { createTodoObject } from './todo.js'
+import { TaskObject } from './todo.js'
 
-createTodoObject()
+const task1 = new TaskObject('example name');
+
+console.log(task1);
