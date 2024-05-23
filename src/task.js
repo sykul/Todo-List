@@ -1,6 +1,10 @@
 class TaskObject {
     constructor(taskName) {
         this.taskName = taskName;
+        this.taskComplete = false;
+        this.description = "";
+        this.dueDate = new Date();
+        this.priority = 'default';
     }
 
     get getTaskName() {
@@ -9,6 +13,10 @@ class TaskObject {
 
     set setTaskName(value) {
         this.taskName = value;
+    }
+
+    toggleTaskComplete() {
+        this.taskComplete = !this.taskComplete;
     }
 
 }
