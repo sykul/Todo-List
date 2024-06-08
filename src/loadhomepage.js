@@ -7,6 +7,7 @@ function displayProjects() {
     heading.textContent = "Project Overview Page";
     element.appendChild(heading);
 
+    
 
 }
 
