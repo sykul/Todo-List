@@ -1,10 +1,5 @@
 
 
-function createTaskCard(taskObject) {
-    const taskName = taskObject.taskName;
-    const date = taskObject.dueDate;
-
-}
 
 function displayTasks() {
     backButton = document.createElement('button');
