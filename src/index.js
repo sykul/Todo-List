@@ -5,9 +5,15 @@ import { TaskObject } from './task.js';
 import { displayProjects } from './loadhomepage.js';
 import { displayTasks } from './loadprojectpage.js';
 import { createTaskCard } from './ui.js';
+import { addToLocalStorage, retrieveFromLocalStorage } from './localstoragefunctions.js'
 
-const task1 = new TaskObject('example name');
+const testObject = new TaskObject('testname', 'testproject', "id" + Math.random().toString(16).slice(2));
+
+addToLocalStorage(testObject);
+let retrievedObject = retrieveFromLocalStorage(testObject);
 
 displayProjects();
-console.log(new TaskObject('testname', 'testproject', "id" + Math.random().toString(16).slice(2)))
-createTaskCard(new TaskObject('testname', 'testproject', "id" + Math.random().toString(16).slice(2)));
+console.log(`testObject: ${testObject}`);
+/* createTaskCard(testObject);
+ */console.log(`retrievedObject: ${retrievedObject}`);
+console.log(retrieveFromLocalStorage(testObject))
