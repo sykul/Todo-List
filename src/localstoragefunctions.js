@@ -1,9 +1,9 @@
 function addToLocalStorage(objectToAdd) {
-    localStorage.setItem(`${objectToAdd.one}`, JSON.stringify(objectToAdd));
+    localStorage.setItem(`${objectToAdd.taskName}`, JSON.stringify(objectToAdd));
 }
 
 function retrieveFromLocalStorage(objectToRetrieve) {
-    const retrievedObject = localStorage.getItem(`${objectToRetrieve}`, JSON.stringify(objectToRetrieve));
+    const retrievedObject = localStorage.getItem(objectToRetrieve.taskName);
     return JSON.parse(retrievedObject);
 }
 

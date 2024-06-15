@@ -13,7 +13,6 @@ addToLocalStorage(testObject);
 let retrievedObject = retrieveFromLocalStorage(testObject);
 
 displayProjects();
-console.log(`testObject: ${testObject}`);
-/* createTaskCard(testObject);
- */console.log(`retrievedObject: ${retrievedObject}`);
-console.log(retrieveFromLocalStorage(testObject))
+console.log(`testObject: ${testObject.taskName}`);
+/* createTaskCard(testObject); */
+console.log(`retrievedObject: ${retrievedObject.taskName}`);
