@@ -3,10 +3,10 @@ function expandTask() {
 }
 
 function createTaskCard(taskObject) {
-    const taskCard = document.createElement('div').classList.add('class', `${taskObject.taskIndex}`);
+    const taskCard = document.createElement('div')
+    taskCard.classList.add('class', `${taskObject.taskIndex}`);
     const content = document.querySelector('.content');
     content.appendChild(taskCard);
-
 }
 
 function saveDescription() {

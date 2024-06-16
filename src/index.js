@@ -14,5 +14,5 @@ let retrievedObject = retrieveFromLocalStorage(testObject);
 
 displayProjects();
 console.log(`testObject: ${testObject.taskName}`);
-/* createTaskCard(testObject); */
+createTaskCard(testObject);
 console.log(`retrievedObject: ${retrievedObject.taskName}`);
