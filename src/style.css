@@ -2,6 +2,10 @@ html {
     background-color: lightblue;
 }
 
+.content {
+    display: flex;
+}
+
 .task-card {
     width: 50px;
     height: 50px;
