@@ -4,7 +4,7 @@ function expandTask() {
 
 function createTaskCard(taskObject) {
     const taskCard = document.createElement('div')
-    taskCard.classList.add('class', `${taskObject.taskIndex}`);
+    taskCard.classList.add('task-card', `${taskObject.taskIndex}`);
     const content = document.querySelector('.content');
     content.appendChild(taskCard);
 }
