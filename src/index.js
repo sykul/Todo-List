@@ -16,6 +16,5 @@ addToLocalStorage(testObject1);
 let retrievedObject = retrieveFromLocalStorage(testObject);
 
 displayProjects();
-createTaskCard(retrievedObject);
 createTaskCard(testObject);
 createTaskCard(testObject1);

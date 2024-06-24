@@ -8,7 +8,6 @@ function createTaskCard(taskObject) {
     taskCard.setAttribute('id', `${taskObject.taskIndex}`);
     taskCard.addEventListener('click', (e) => {
         console.log(e.target.id);
-        console.log(taskObject.taskIndex);
     });
 
     const content = document.querySelector('.content');
