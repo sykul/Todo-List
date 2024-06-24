@@ -2,6 +2,7 @@ html {
     background-color: lightblue;
 }
 
+
 .content {
     display: flex;
 }
@@ -15,4 +16,7 @@ html {
 .add-project-button {
     width: 40px;
     height: 30px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }
