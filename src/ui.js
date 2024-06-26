@@ -19,4 +19,9 @@ function saveDescription() {
     clickedTask.description 
 }
 
-export { createTaskCard }
+function toggleAddProjectModal() {
+    const addProjectModel = document.getElementById('addProjectModal');
+    addProjectModel.classList.toggle('show');
+}
+
+export { createTaskCard, toggleAddProjectModal}

@@ -8,6 +8,8 @@ function displayProjects() {
     heading.textContent = "Project Overview Page";
     element.appendChild(heading);
 
+    const addProjectModal = document.createElement('')
+
     const addProjectButton = document.createElement('button');
     addProjectButton.classList.add('add-project-button');
     bodyElement.appendChild(addProjectButton);
