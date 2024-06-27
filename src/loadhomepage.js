@@ -14,6 +14,9 @@ function displayProjects() {
 
     const addProjectButton = document.createElement('button');
     addProjectButton.classList.add('add-project-button');
+    addProjectButton.addEventListener('click', () => {
+        addProjectModal.classList.toggle('hidden');
+    })
     bodyElement.appendChild(addProjectButton);
 
 }

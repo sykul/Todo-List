@@ -21,7 +21,7 @@ function saveDescription() {
 
 function toggleAddProjectModal() {
     const addProjectModel = document.getElementById('addProjectModal');
-    addProjectModel.classList.toggle('show');
+    addProjectModel.classList.toggle('hidden');
 }
 
 export { createTaskCard, toggleAddProjectModal}
