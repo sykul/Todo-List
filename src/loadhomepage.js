@@ -10,7 +10,7 @@ function displayProjects() {
 
     const addProjectModal = document.createElement('div');
     addProjectModal.classList.add('modal', 'hidden');
-    element.appendChild(addProjectModal);
+    bodyElement.appendChild(addProjectModal);
 
     const addProjectButton = document.createElement('button');
     addProjectButton.classList.add('add-project-button');
