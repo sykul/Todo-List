@@ -8,12 +8,17 @@ import { createTaskCard, toggleAddProjectModal} from './ui.js';
 import { addToLocalStorage, retrieveFromLocalStorage } from './localstoragefunctions.js'
 import { te } from 'date-fns/locale';
 
-const testObject = new TaskObject('testname', 'defaultProject', "id" + Math.random().toString(16).slice(2));
-const testObject1 = new TaskObject('testname1', 'defaultProject', "id" + Math.random().toString(16).slice(2));
+const tasks = [];
 
-addToLocalStorage(testObject);
-addToLocalStorage(testObject1);
-let retrievedObject = retrieveFromLocalStorage(testObject);
+const testObject = new TaskObject('testname', 'defaultProject', "id" + Math.random().toString(16).slice(2));
+tasks.push(testObject);
+const testObject1 = new TaskObject('testname1', 'defaultProject', "id" + Math.random().toString(16).slice(2));
+tasks.push(testObject1);
+
+addToLocalStorage(tasks);
+let retrievedArray = retrieveFromLocalStorage(tasks);
+console.log(tasks);
+console.log(retrievedArray);
 
 displayProjects();
 createTaskCard(testObject);

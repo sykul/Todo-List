@@ -31,13 +31,9 @@ function createModal() {
 }
 
 function displayProjects() {
-
     createHeading();
-
     createModal();
-
     createAddProjectButton();
-
 }
 
 export { displayProjects };
