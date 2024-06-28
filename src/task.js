@@ -20,7 +20,6 @@ class TaskObject {
     toggleTaskComplete() {
         this.taskComplete = !this.taskComplete;
     }
-
 }
 
 export { TaskObject }
