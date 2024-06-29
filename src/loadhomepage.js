@@ -23,9 +23,19 @@ function createModal() {
     const addProjectModal = document.createElement('div');
     addProjectModal.classList.add('modal', 'hidden');
 
+    const form = document.createElement('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
     const textBox = document.createElement('input');
     textBox.type = 'text';
-    addProjectModal.appendChild(textBox);
+
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('cancel-button');
+
+    form.appendChild(textBox);
+    form.appendChild(cancelButton);
+    addProjectModal.appendChild(form);
 
     bodyElement.appendChild(addProjectModal);
 }

@@ -23,3 +23,8 @@ console.log(retrievedArray);
 displayProjects();
 createTaskCard(testObject);
 createTaskCard(testObject1);
+
+testObject.taskName = 'test name';
+testObject1.taskName = 'test name 1';
+console.log(tasks);
+console.log(retrievedArray);
