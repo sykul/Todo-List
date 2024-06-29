@@ -33,9 +33,11 @@ function createModal() {
 
     const submitButton = document.createElement('button');
     submitButton.classList.add('submit-button');
+    submitButton.innerText = 'Submit';
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
+    cancelButton.innerText = 'Cancel';
 
     form.appendChild(textBox);
     form.appendChild(submitButton);
