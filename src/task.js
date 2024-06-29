@@ -1,12 +1,12 @@
 class TaskObject {
-    constructor(taskName, project, taskIndex) {
+    constructor(taskName, project) {
         this.taskName = taskName;
         this.parentProject = project;
         this.taskComplete = false;
         this.description = "";
         this.dueDate = new Date();
         this.priority = 'default';
-        this.taskIndex = taskIndex;
+        this.taskIndex = "id" + Math.random().toString(16).slice(2);
     }
 
     get getTaskName() {

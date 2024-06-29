@@ -10,9 +10,9 @@ import { te } from 'date-fns/locale';
 
 const tasks = [];
 
-const testObject = new TaskObject('testname', 'defaultProject', "id" + Math.random().toString(16).slice(2));
+const testObject = new TaskObject('testname', 'defaultProject');
 tasks.push(testObject);
-const testObject1 = new TaskObject('testname1', 'defaultProject', "id" + Math.random().toString(16).slice(2));
+const testObject1 = new TaskObject('testname1', 'defaultProject');
 tasks.push(testObject1);
 
 addToLocalStorage(tasks);
