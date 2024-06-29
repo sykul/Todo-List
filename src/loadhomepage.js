@@ -15,14 +15,17 @@ function createAddProjectButton() {
     const addProjectModal = document.querySelector('.modal');
     addProjectButton.classList.add('add-project-button');
     addProjectButton.addEventListener('click', () => {
-        addProjectModal.classList.toggle('hidden');
+        addProjectModal.showModal();
     });
     bodyElement.appendChild(addProjectButton);
 }
 
 function createModal() {
-    const addProjectModal = document.createElement('div');
+    const addProjectModal = document.createElement('dialog');
     addProjectModal.classList.add('modal', 'hidden');
+
+    const modalHeading = document.createElement('p');
+    modalHeading.textContent = 'Type in the name of your new project';
 
     const form = document.createElement('form');
     form.addEventListener('submit', (e) => {
@@ -39,6 +42,7 @@ function createModal() {
     cancelButton.classList.add('cancel-button');
     cancelButton.innerText = 'Cancel';
 
+    form.appendChild(modalHeading);
     form.appendChild(textBox);
     form.appendChild(submitButton);
     form.appendChild(cancelButton);
