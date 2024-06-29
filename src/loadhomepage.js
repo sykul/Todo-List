@@ -1,3 +1,4 @@
+import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
 
 const element = document.querySelector('.content');
@@ -30,10 +31,14 @@ function createModal() {
     const textBox = document.createElement('input');
     textBox.type = 'text';
 
+    const submitButton = document.createElement('button');
+    submitButton.classList.add('submit-button');
+
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
 
     form.appendChild(textBox);
+    form.appendChild(submitButton);
     form.appendChild(cancelButton);
     addProjectModal.appendChild(form);
 
