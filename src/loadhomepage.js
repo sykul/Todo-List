@@ -51,6 +51,18 @@ function createModal() {
     form.appendChild(cancelButton);
     addProjectModal.appendChild(form);
 
+    addProjectModal.addEventListener("click", e => {
+        const dialogDimensions = addProjectModal.getBoundingClientRect()
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+            addProjectModal.close()
+        }
+      })
+
     bodyElement.appendChild(addProjectModal);
 }
 
