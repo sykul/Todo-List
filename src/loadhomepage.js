@@ -22,9 +22,10 @@ function createAddProjectButton() {
 
 function createModal() {
     const addProjectModal = document.createElement('dialog');
-    addProjectModal.classList.add('modal', 'hidden');
+    addProjectModal.classList.add('modal');
 
-    const modalHeading = document.createElement('p');
+    const modalHeading = document.createElement('label');
+    modalHeading.htmlFor = 'modalTextbox';
     modalHeading.textContent = 'Type in the name of your new project';
 
     const form = document.createElement('form');
@@ -32,7 +33,12 @@ function createModal() {
         e.preventDefault();
     });
     const textBox = document.createElement('input');
+    textBox.id = 'modalTextbox';
+    textBox.name = 'projectName';
     textBox.type = 'text';
+    textBox.minLength = '1';
+    textBox.maxLength = '20';
+    textBox.required = true;
 
     const submitButton = document.createElement('button');
     submitButton.classList.add('submit-button');
@@ -40,9 +46,11 @@ function createModal() {
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
+    cancelButton.type = 'button';
     cancelButton.innerText = 'Cancel';
     cancelButton.addEventListener('click', () => {
         addProjectModal.close();
+        textBox.value = '';
     })
 
     form.appendChild(modalHeading);
@@ -59,7 +67,8 @@ function createModal() {
           e.clientY < dialogDimensions.top ||
           e.clientY > dialogDimensions.bottom
         ) {
-            addProjectModal.close()
+            addProjectModal.close();
+            textBox.value = '';
         }
       })
 
