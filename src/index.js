@@ -28,3 +28,6 @@ testObject.taskName = 'test name';
 testObject1.taskName = 'test name 1';
 console.log(tasks);
 console.log(retrievedArray);
+
+const addProjectModal = document.querySelector('.modal');
+addProjectModal.showModal();

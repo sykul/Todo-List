@@ -21,13 +21,13 @@ html {
     right: 10px;
 }
 
-.modal {
+dialog {
+    margin-right: 10px;
+    margin-bottom: 50px;
     background-color: beige;
     width: 310px;
     height: 200px;
-    position: absolute;
-    bottom: 50px;
-    right: 10px;
+
 }
 
 .cancel-button, .submit-button {
