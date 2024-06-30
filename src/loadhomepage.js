@@ -41,6 +41,9 @@ function createModal() {
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
     cancelButton.innerText = 'Cancel';
+    cancelButton.addEventListener('click', () => {
+        addProjectModal.close();
+    })
 
     form.appendChild(modalHeading);
     form.appendChild(textBox);
