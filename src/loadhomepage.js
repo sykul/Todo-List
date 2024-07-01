@@ -43,6 +43,9 @@ function createModal() {
     const submitButton = document.createElement('button');
     submitButton.classList.add('submit-button');
     submitButton.innerText = 'Submit';
+    submitButton.addEventListener('click', () => {
+        
+    })
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');
