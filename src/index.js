@@ -16,9 +16,19 @@ displayProjects();
 document.querySelector('.modal').showModal();
 
 const project1 = new ProjectObject('project1');
+projects.push(project1);
 const task1 = new TaskObject('task1','project1');
 const task2 = new TaskObject('task2','project1');
 project1.addTaskToProject(task1);
 project1.addTaskToProject(task2);
-console.log(project1);
+const project2 = new ProjectObject('project2');
+projects.push(project2);
 project1.removeTaskFromProject(task1)
+console.log(projects);
+addToLocalStorage(projects);
+const retrievedProjects = retrieveFromLocalStorage(projects);
+/* re-add object methods by resetting prototypes */
+retrievedProjects.forEach(project => {
+    Object.setPrototypeOf(project, ProjectObject.prototype)    
+});
+console.log(retrievedProjects);
