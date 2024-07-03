@@ -1,5 +1,6 @@
 import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
+import { ProjectObject } from "./project class";
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
@@ -43,9 +44,15 @@ function createModal() {
     const submitButton = document.createElement('button');
     submitButton.classList.add('submit-button');
     submitButton.innerText = 'Submit';
-    submitButton.addEventListener('click', () => {
-        
-    })
+    submitButton.addEventListener('click', (e) => {
+        if (textBox.checkValidity() === true) {
+            const newProject = new ProjectObject(textBox.value);
+            
+            projects.push(newProject);
+            console.log(projects);
+        } else 
+            console.log('no');
+    });
 
     const cancelButton = document.createElement('button');
     cancelButton.classList.add('cancel-button');

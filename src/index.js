@@ -9,7 +9,7 @@ import { createTaskCard, toggleAddProjectModal} from './ui.js';
 import { addToLocalStorage, retrieveFromLocalStorage } from './localstoragefunctions.js'
 import { te } from 'date-fns/locale';
 
-const projects = []
+const projects = [];
 
 displayProjects();
 
