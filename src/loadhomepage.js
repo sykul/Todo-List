@@ -1,6 +1,7 @@
 import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
+import { projects } from "./index"
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');

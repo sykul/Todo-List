@@ -32,3 +32,5 @@ retrievedProjects.forEach(project => {
     Object.setPrototypeOf(project, ProjectObject.prototype)    
 });
 console.log(retrievedProjects);
+
+export { projects }
