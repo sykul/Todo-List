@@ -2,6 +2,7 @@ import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
 import { projects } from "./index"
+import { addToLocalStorage } from "./localstoragefunctions";
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
@@ -44,15 +45,15 @@ function createModal() {
 
     const submitButton = document.createElement('button');
     submitButton.classList.add('submit-button');
+    submitButton.type = 'button';
     submitButton.innerText = 'Submit';
     submitButton.addEventListener('click', (e) => {
         if (textBox.checkValidity() === true) {
-            const newProject = new ProjectObject(textBox.value);
-            
+            const newProject = new ProjectObject(textBox.value);   
             projects.push(newProject);
-            console.log(projects);
-        } else 
-            console.log('no');
+            addProjectModal.close();
+            textBox.value = '';
+        } 
     });
 
     const cancelButton = document.createElement('button');
