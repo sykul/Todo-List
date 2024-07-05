@@ -1,10 +1,15 @@
-function addToLocalStorage(objectToAdd) {
-    localStorage.setItem(`${objectToAdd.taskName}`, JSON.stringify(objectToAdd));
+import { ProjectObject } from './project class';
+
+function addToLocalStorage(thingToAdd) {
+    localStorage.setItem(`${Object.keys({thingToAdd})[0]}`, JSON.stringify(thingToAdd));
 }
 
-function retrieveFromLocalStorage(objectToRetrieve) {
-    const retrievedObject = localStorage.getItem(objectToRetrieve.taskName);
-    return JSON.parse(retrievedObject);
+function retrieveFromLocalStorage(thingToRetrieve) {
+    const retrievedProjects = JSON.parse(localStorage.getItem(thingToRetrieve));
+    retrievedProjects.forEach((project) => {
+        Object.setPrototypeOf(project, ProjectObject.prototype); 
+    });
+    return retrievedProjects;
 }
 
 export { addToLocalStorage, retrieveFromLocalStorage }

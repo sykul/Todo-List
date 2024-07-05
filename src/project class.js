@@ -5,6 +5,7 @@ class ProjectObject {
         this.projectName = projectName;
         this.projectIndex = "id" + Math.random().toString(16).slice(2);
         this.taskList = [];
+        this.isActive = false;
     }
 
     addTaskToProject(task) {
@@ -15,6 +16,13 @@ class ProjectObject {
         this.taskList.splice(task, 1);
     }
 
+    activateProject() {
+        this.isActive = true;
+    }
+
+    deactivateProject() {
+        this.isActive = false;
+    }
 }
 
 export { ProjectObject }

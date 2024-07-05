@@ -87,10 +87,10 @@ function createModal() {
     bodyElement.appendChild(addProjectModal);
 }
 
-function displayProjects() {
+function displayProjectPage() {
     createHeading();
     createModal();
     createAddProjectButton();
 }
 
-export { displayProjects };
+export { displayProjectPage };
