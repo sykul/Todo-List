@@ -1,3 +1,6 @@
+import { projects } from './index'
+import { displayTaskPage } from './loadprojectpage'
+
 function expandTask() {
 
 }
@@ -16,7 +19,12 @@ function createProjectCard(projectObject) {
     taskCard.setAttribute('id', `${projectObject.projectIndex}`);
     taskCard.textContent = `${projectObject.projectName}`
     taskCard.addEventListener('click', (e) => {
-        console.log(e.target.id);
+        const id = e.target.id;
+        const matchingProject = projects.filter((project) => project.projectIndex === id)[0];
+        matchingProject.activateProject();
+        const projectName = matchingProject.projectName;
+        displayTaskPage(matchingProject, projectName);
+        console.log(matchingProject);
     });
 
     const content = document.querySelector('.content');

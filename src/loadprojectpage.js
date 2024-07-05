@@ -9,10 +9,10 @@ import { recreateTemplate } from './ui.js';
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
 
-function createHeading() {
+function createHeading(name) {
     const heading = document.createElement('h1');
     const element = document.querySelector('.content');
-    heading.textContent = "Tasks Page";
+    heading.textContent = `${name}`;
     element.appendChild(heading);
 }
 
@@ -26,10 +26,10 @@ function createBackButton() {
     document.querySelector('body').prepend(backButton);
 }
 
-function displayTaskPage(projectName) {
+function displayTaskPage(project, name) {
     recreateTemplate();
     createBackButton();
-    createHeading(projectName);
+    createHeading(name);
 }
 
 export { displayTaskPage };
