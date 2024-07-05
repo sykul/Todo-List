@@ -3,6 +3,7 @@ import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
 import { projects } from "./index"
 import { addToLocalStorage } from "./localstoragefunctions";
+import { recreateTemplate } from './ui.js';
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
@@ -88,6 +89,7 @@ function createModal() {
 }
 
 function displayProjectPage() {
+    recreateTemplate();
     createHeading();
     createModal();
     createAddProjectButton();

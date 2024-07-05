@@ -30,7 +30,7 @@ dialog {
 
 }
 
-.cancel-button, .submit-button {
+.cancel-button, .submit-button, .back-button {
     width: 50px;
     height: 24px;
 }

@@ -2,6 +2,14 @@ function expandTask() {
 
 }
 
+function recreateTemplate() {
+    const bodyElement = document.querySelector('body');
+    bodyElement.replaceChildren();
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('content');
+    bodyElement.appendChild(contentDiv);
+}
+
 function createTaskCard(taskObject) {
     const taskCard = document.createElement('div')
     taskCard.classList.add('task-card');
@@ -24,4 +32,4 @@ function toggleAddProjectModal() {
     addProjectModel.classList.toggle('hidden');
 }
 
-export { createTaskCard, toggleAddProjectModal}
+export { createTaskCard, toggleAddProjectModal, recreateTemplate}
