@@ -3,7 +3,7 @@ import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
 import { projects } from "./index"
 import { addToLocalStorage } from "./localstoragefunctions";
-import { recreateTemplate } from './ui.js';
+import { recreateTemplate, createTaskCard } from './ui.js';
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
@@ -13,6 +13,13 @@ function createHeading() {
     heading.textContent = "Project Overview Page";
     const element = document.querySelector('.content');
     element.appendChild(heading);
+}
+
+function listProjectCards() {
+    for (let i in projects) {
+        let item = projects[i]
+        createTaskCard(item);
+    }
 }
 
 function createAddProjectButton() {
@@ -92,6 +99,7 @@ function createModal() {
 function displayProjectPage() {
     recreateTemplate();
     createHeading();
+    listProjectCards();
     createModal();
     createAddProjectButton();
 }

@@ -9,8 +9,6 @@ import { recreateTemplate } from './ui.js';
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
 
-
-
 function createHeading() {
     const heading = document.createElement('h1');
     const element = document.querySelector('.content');
@@ -28,10 +26,10 @@ function createBackButton() {
     document.querySelector('body').prepend(backButton);
 }
 
-function displayTaskPage() {
+function displayTaskPage(projectName) {
     recreateTemplate();
     createBackButton();
-    createHeading();
+    createHeading(projectName);
 }
 
 export { displayTaskPage };
