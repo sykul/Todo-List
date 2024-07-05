@@ -2,8 +2,8 @@ import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
 import { projects } from "./index"
-import { addToLocalStorage } from "./localstoragefunctions";
-import { recreateTemplate, createTaskCard } from './ui.js';
+import { addToLocalStorage, retrieveFromLocalStorage } from "./localstoragefunctions";
+import { recreateTemplate, createProjectCard } from './ui.js';
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
@@ -18,7 +18,7 @@ function createHeading() {
 function listProjectCards() {
     for (let i in projects) {
         let item = projects[i]
-        createTaskCard(item);
+        createProjectCard(item);
     }
 }
 
@@ -60,6 +60,7 @@ function createModal() {
         if (textBox.checkValidity() === true) {
             const newProject = new ProjectObject(textBox.value);   
             projects.push(newProject);
+            addToLocalStorage(projects, 'projectArray');
             displayProjectPage();
         } 
     });

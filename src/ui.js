@@ -10,10 +10,11 @@ function recreateTemplate() {
     bodyElement.appendChild(contentDiv);
 }
 
-function createTaskCard(taskObject) {
-    const taskCard = document.createElement('div')
-    taskCard.classList.add('task-card');
-    taskCard.setAttribute('id', `${taskObject.taskIndex}`);
+function createProjectCard(projectObject) {
+    const taskCard = document.createElement('div');
+    taskCard.classList.add('project-card');
+    taskCard.setAttribute('id', `${projectObject.projectIndex}`);
+    taskCard.textContent = `${projectObject.projectName}`
     taskCard.addEventListener('click', (e) => {
         console.log(e.target.id);
     });
@@ -32,4 +33,4 @@ function toggleAddProjectModal() {
     addProjectModel.classList.toggle('hidden');
 }
 
-export { createTaskCard, toggleAddProjectModal, recreateTemplate}
+export { createProjectCard, toggleAddProjectModal, recreateTemplate}
