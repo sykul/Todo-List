@@ -11,6 +11,7 @@ const bodyElement = document.querySelector('body');
 function createHeading() {
     const heading = document.createElement('h1');
     heading.textContent = "Project Overview Page";
+    const element = document.querySelector('.content');
     element.appendChild(heading);
 }
 
