@@ -22,8 +22,8 @@ project1.addTaskToProject(task2);
 const project2 = new ProjectObject('project2');
 projects.push(project2);
 console.log(projects);
-addToLocalStorage(projects);
-const retrievedProjects = retrieveFromLocalStorage('thingToAdd');
+addToLocalStorage(projects, 'projectArray');
+const retrievedProjects = retrieveFromLocalStorage('projectArray');
 console.log(retrievedProjects);
 
 export { projects }

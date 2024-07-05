@@ -1,7 +1,7 @@
 import { ProjectObject } from './project class';
 
-function addToLocalStorage(thingToAdd) {
-    localStorage.setItem(`${Object.keys({thingToAdd})[0]}`, JSON.stringify(thingToAdd));
+function addToLocalStorage(thingToAdd, thingName) {
+    localStorage.setItem(`${thingName}`, JSON.stringify(thingToAdd));
 }
 
 function retrieveFromLocalStorage(thingToRetrieve) {
