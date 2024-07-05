@@ -60,8 +60,7 @@ function createModal() {
         if (textBox.checkValidity() === true) {
             const newProject = new ProjectObject(textBox.value);   
             projects.push(newProject);
-            addProjectModal.close();
-            textBox.value = '';
+            displayProjectPage();
         } 
     });
 
