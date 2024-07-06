@@ -1,5 +1,5 @@
 import { projects } from './index'
-import { displayTaskPage } from './loadprojectpage'
+import { displayTaskPage } from './loadtaskpage'
 
 function expandTask() {
 
@@ -14,11 +14,11 @@ function recreateTemplate() {
 }
 
 function createProjectCard(projectObject) {
-    const taskCard = document.createElement('div');
-    taskCard.classList.add('project-card');
-    taskCard.setAttribute('id', `${projectObject.projectIndex}`);
-    taskCard.textContent = `${projectObject.projectName}`
-    taskCard.addEventListener('click', (e) => {
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
+    projectCard.setAttribute('id', `${projectObject.projectIndex}`);
+    projectCard.textContent = `${projectObject.projectName}`
+    projectCard.addEventListener('click', (e) => {
         const id = e.target.id;
         const matchingProject = projects.filter((project) => project.projectIndex === id)[0];
         matchingProject.activateProject();
@@ -28,7 +28,11 @@ function createProjectCard(projectObject) {
     });
 
     const content = document.querySelector('.content');
-    content.appendChild(taskCard);
+    content.appendChild(projectCard);
+}
+
+function createTaskCard() {
+    
 }
 
 function saveDescription() {

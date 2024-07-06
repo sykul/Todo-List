@@ -1,8 +1,8 @@
 import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
-import { ProjectObject } from "./project class";
+import { ProjectObject } from "./project class.js";
 import { projects } from "./index"
-import { addToLocalStorage } from "./localstoragefunctions";
+import { addToLocalStorage } from "./localstoragefunctions.js";
 import { displayProjectPage } from './loadhomepage.js';
 import { recreateTemplate } from './ui.js';
 
