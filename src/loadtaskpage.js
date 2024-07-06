@@ -21,6 +21,12 @@ function createBackButton() {
     backButton.classList.add('back-button');
     backButton.textContent = 'Back';
     backButton.addEventListener('click', () => {
+        projects.forEach((object) => {
+            if (object.isActive === true) {
+                object.isActive = false;
+            };
+        });
+        console.log(projects)
         displayProjectPage();
     })
     document.querySelector('body').prepend(backButton);
