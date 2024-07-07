@@ -22,9 +22,4 @@ function saveDescription() {
     clickedTask.description 
 }
 
-function toggleAddProjectModal() {
-    const addProjectModel = document.getElementById('addProjectModal');
-    addProjectModel.classList.toggle('hidden');
-}
-
-export { toggleAddProjectModal, recreateTemplate}
+export { recreateTemplate }

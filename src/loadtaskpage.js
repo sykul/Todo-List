@@ -1,7 +1,6 @@
 import { projects } from "./index"
 import { subMilliseconds } from "date-fns";
 import { el } from "date-fns/locale";
-import { ProjectObject } from "./project class.js";
 import { addToLocalStorage } from "./localstoragefunctions.js";
 import { displayProjectPage } from './loadhomepage.js';
 import { recreateTemplate } from './ui.js';
@@ -35,7 +34,7 @@ function createBackButton() {
 function createTaskCard(taskObject) {
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-card');
-    taskCard.setAttribute('id', ``);
+    taskCard.setAttribute('id', `${taskObject}`);
     taskCard.addEventListener('click', () => {
         console.log('hi');
     });
@@ -45,8 +44,8 @@ function createTaskCard(taskObject) {
 }
 
 function listTaskCards(project) {
-    for (let i in project) {
-        let item = projects[i]
+    for (let i in project.taskList) {
+        let item = project[i];
         createTaskCard(item);
     }
 }

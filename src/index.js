@@ -20,10 +20,6 @@ project1.addTaskToProject(task1);
 project1.addTaskToProject(task2);
 const project2 = new ProjectObject('project2');
 projects.push(project2);
-console.log(projects);
-addToLocalStorage(projects, 'projectArray');
-const retrievedProjects = retrieveFromLocalStorage('projectArray');
-console.log(retrievedProjects);
 
 displayProjectPage();
 

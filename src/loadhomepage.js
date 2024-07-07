@@ -23,11 +23,10 @@ function createProjectCard(projectObject) {
     projectCard.textContent = `${projectObject.projectName}`
     projectCard.addEventListener('click', (e) => {
         const id = e.target.id;
-        const matchingProject = projects.filter((project) => project.projectIndex === id)[0];
+        const matchingProject = projects.filter((project) => project.projectIndex === id)[0]
         matchingProject.activateProject();
         const projectName = matchingProject.projectName;
         displayTaskPage(matchingProject, projectName);
-        console.log(projects);
     });
 
     const content = document.querySelector('.content');
