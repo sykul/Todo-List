@@ -12,7 +12,7 @@ function createHeading(name) {
     const heading = document.createElement('h1');
     const element = document.querySelector('.content');
     heading.textContent = `${name}`;
-    element.appendChild(heading);
+    bodyElement.prepend(heading);
 }
 
 function createBackButton() {
@@ -55,8 +55,10 @@ function displayTaskPage(project, name) {
     console.log('displaytaskpage run');
     console.log(project)
     recreateTemplate();
+    const element = document.querySelector('.content');
+    element.classList.add('task-area');
+    createHeading(project.projectName);
     createBackButton();
-    createHeading(name);
     listTaskCards(project);
 }
 
