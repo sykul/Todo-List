@@ -13,27 +13,9 @@ function recreateTemplate() {
     bodyElement.appendChild(contentDiv);
 }
 
-function createProjectCard(projectObject) {
-    const projectCard = document.createElement('div');
-    projectCard.classList.add('project-card');
-    projectCard.setAttribute('id', `${projectObject.projectIndex}`);
-    projectCard.textContent = `${projectObject.projectName}`
-    projectCard.addEventListener('click', (e) => {
-        const id = e.target.id;
-        const matchingProject = projects.filter((project) => project.projectIndex === id)[0];
-        matchingProject.activateProject();
-        const projectName = matchingProject.projectName;
-        displayTaskPage(matchingProject, projectName);
-        console.log(matchingProject);
-    });
 
-    const content = document.querySelector('.content');
-    content.appendChild(projectCard);
-}
 
-function createTaskCard() {
-    
-}
+
 
 function saveDescription() {
     let taskIndex = event.target.parentElement.dataset.taskIndex;
@@ -45,4 +27,4 @@ function toggleAddProjectModal() {
     addProjectModel.classList.toggle('hidden');
 }
 
-export { createProjectCard, toggleAddProjectModal, recreateTemplate}
+export { toggleAddProjectModal, recreateTemplate}

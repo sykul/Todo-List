@@ -3,7 +3,8 @@ import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
 import { projects } from "./index"
 import { addToLocalStorage, retrieveFromLocalStorage } from "./localstoragefunctions";
-import { recreateTemplate, createProjectCard } from './ui.js';
+import { recreateTemplate } from './ui.js';
+import { displayTaskPage } from './loadtaskpage.js'
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
@@ -13,6 +14,24 @@ function createHeading() {
     heading.textContent = "Project Overview Page";
     const element = document.querySelector('.content');
     element.appendChild(heading);
+}
+
+function createProjectCard(projectObject) {
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
+    projectCard.setAttribute('id', `${projectObject.projectIndex}`);
+    projectCard.textContent = `${projectObject.projectName}`
+    projectCard.addEventListener('click', (e) => {
+        const id = e.target.id;
+        const matchingProject = projects.filter((project) => project.projectIndex === id)[0];
+        matchingProject.activateProject();
+        const projectName = matchingProject.projectName;
+        displayTaskPage(matchingProject, projectName);
+        console.log(projects);
+    });
+
+    const content = document.querySelector('.content');
+    content.appendChild(projectCard);
 }
 
 function listProjectCards() {
