@@ -34,7 +34,7 @@ function createBackButton() {
 function createTaskCard(taskObject) {
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-card');
-    taskCard.setAttribute('id', `${taskObject}`);
+    taskCard.setAttribute('id', `${taskObject.taskIndex}`);
     taskCard.addEventListener('click', () => {
         console.log('hi');
     });
@@ -44,13 +44,16 @@ function createTaskCard(taskObject) {
 }
 
 function listTaskCards(project) {
-    for (let i in project.taskList) {
-        let item = project[i];
+    console.log('listtaskcards run')
+    console.log(project.taskList)
+    for (let item of project.taskList) {
         createTaskCard(item);
     }
 }
 
 function displayTaskPage(project, name) {
+    console.log('displaytaskpage run');
+    console.log(project)
     recreateTemplate();
     createBackButton();
     createHeading(name);
