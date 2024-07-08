@@ -14,12 +14,37 @@ html {
 
 .task-area {
     flex-direction: column;
+    gap: 10px;
 }
 
 .task-card {
     width: 80%;
-    height: 100px;
+    height: 130px;
     border: 1px black solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.task-top-right, .task-top-left, .task-right {
+    border: 1px black solid;
+}
+
+.task-left {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+}
+
+.task-right {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 3px;
+}
+
+.task-delete-button {
+    width: 30px;
+    height: 30px;
 }
 
 .add-project-button {

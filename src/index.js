@@ -22,6 +22,8 @@ const project2 = new ProjectObject('project2');
 projects.push(project2);
 
 displayProjectPage();
+const projectCard = document.querySelector('.project-card')
+projectCard.dispatchEvent(new Event('click'))
 
 
 export { projects }

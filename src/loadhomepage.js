@@ -35,7 +35,7 @@ function createProjectCard(projectObject) {
 
 function listProjectCards() {
     for (let i in projects) {
-        let item = projects[i]
+        let item = projects[i];
         createProjectCard(item);
     }
 }
