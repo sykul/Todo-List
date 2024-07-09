@@ -4,9 +4,84 @@ import { el } from "date-fns/locale";
 import { addToLocalStorage } from "./localstoragefunctions.js";
 import { displayProjectPage } from './loadhomepage.js';
 import { recreateTemplate } from './ui.js';
+import { TaskObject } from "./task class.js";
 
 const element = document.querySelector('.content');
 const bodyElement = document.querySelector('body');
+
+function createModal() {
+    const addTaskModal = document.createElement('dialog');
+    addTaskModal.classList.add('modal');
+
+    const modalHeading = document.createElement('label');
+    modalHeading.htmlFor = 'modalTextbox';
+    modalHeading.textContent = 'Type in the name of your new task';
+
+    const form = document.createElement('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
+    const textBox = document.createElement('input');
+    textBox.id = 'modalTextbox';
+    textBox.name = 'projectName';
+    textBox.type = 'text';
+    textBox.minLength = '1';
+    textBox.maxLength = '20';
+    textBox.required = true;
+
+    const submitButton = document.createElement('button');
+    submitButton.classList.add('submit-button');
+    submitButton.type = 'button';
+    submitButton.innerText = 'Submit';
+    submitButton.addEventListener('click', (e) => {
+        if (textBox.checkValidity() === true) {
+            const newProject = new TaskObject(textBox.value);   
+            projects.push(newProject);
+            addToLocalStorage(projects, 'projectArray');
+            displayProjectPage();
+        }
+    });
+
+    const cancelButton = document.createElement('button');
+    cancelButton.classList.add('cancel-button');
+    cancelButton.type = 'button';
+    cancelButton.innerText = 'Cancel';
+    cancelButton.addEventListener('click', () => {
+        addTaskModal.close();
+        textBox.value = '';
+    })
+
+    form.appendChild(modalHeading);
+    form.appendChild(textBox);
+    form.appendChild(submitButton);
+    form.appendChild(cancelButton);
+    addTaskModal.appendChild(form);
+
+    addTaskModal.addEventListener("click", e => {
+        const dialogDimensions = addTaskModal.getBoundingClientRect()
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+            addTaskModal.close();
+            textBox.value = '';
+        }
+      })
+
+    bodyElement.appendChild(addTaskModal);
+}
+
+function createAddTaskButton() {
+    const addTaskButton = document.createElement('button');
+    const addTaskModal = document.querySelector('.modal');
+    addTaskButton.classList.add('add-project-button');
+    addTaskButton.addEventListener('click', () => {
+        addTaskModal.showModal();
+    });
+    bodyElement.appendChild(addTaskButton);
+}
 
 function createHeading(name) {
     const heading = document.createElement('h1');
@@ -42,11 +117,17 @@ function createTaskCard(taskObject) {
     topLeft.classList.add('task-top-left');
     const bottomLeft = document.createElement('div');
     bottomLeft.classList.add('task-top-right');
-    const right = document.createElement('div')
+    const right = document.createElement('div');
     right.classList.add('task-right');
 
-    const doneButton = document.createElement('button');
-    doneButton.type = 'button';
+    const doneSwitch = document.createElement('input');
+    doneSwitch.type = 'checkbox';
+    doneSwitch.name = "doneSwitch";
+    doneSwitch.classList.add("done-switch");
+    doneSwitch.id = 'doneSwitch';
+    const doneSwitchLabel = document.createElement('label');
+    doneSwitchLabel.textContent = 'Completed? ';
+    doneSwitchLabel.htmlFor = 'doneSwitch';
 
     const taskHeading = document.createElement('h3');
     taskHeading.textContent = `${taskObject.taskName}`;
@@ -57,7 +138,7 @@ function createTaskCard(taskObject) {
     dateSelector.type = 'date';
     dateSelector.name = "date";
     dateSelector.classList.add("date-selector");
-    dateSelector.id = 'date'
+    dateSelector.id = 'date';
     const dateLabel = document.createElement('label');
     dateLabel.textContent = 'Due: ';
     dateLabel.htmlFor = 'date';
@@ -66,7 +147,7 @@ function createTaskCard(taskObject) {
     const priorityValues = ["low", "medium", "high"];
     prioritySelector.name = "priority";
     prioritySelector.classList.add("priority");
-    prioritySelector.id = 'prioritySelector'
+    prioritySelector.id = 'prioritySelector';
     for (let val of priorityValues) {
         const option = document.createElement('option');
         option.value = val;
@@ -81,12 +162,17 @@ function createTaskCard(taskObject) {
     deleteButton.type = 'button';
     deleteButton.classList.add('task-delete-button');
     deleteButton.textContent = 'X';
-    deleteButton.addEventListener('click', () => {
-        console.log('delete');
+    deleteButton.addEventListener('click', (e) => {
+        const activeProject = projects.filter(project => project.isActive)[0];
+        const tasks = activeProject.taskList;
+        const taskID = e.currentTarget.parentNode.parentNode.id;
+        activeProject.taskList = tasks.filter(task => task.taskIndex != taskID);
+        displayTaskPage(activeProject);
     })
 
-    topLeft.appendChild(doneButton);
     topLeft.appendChild(taskHeading);
+    topLeft.appendChild(doneSwitchLabel);
+    topLeft.appendChild(doneSwitch);
     left.appendChild(topLeft);
     
     bottomLeft.appendChild(notes);
@@ -101,31 +187,29 @@ function createTaskCard(taskObject) {
     right.appendChild(deleteButton);
     taskCard.appendChild(right);
 
-    taskCard.addEventListener('click', () => {
-        console.log('hi');
-    });
-
     const content = document.querySelector('.content');
     content.appendChild(taskCard);
 }
 
 function listTaskCards(project) {
-    console.log('listtaskcards run')
-    console.log(project.taskList)
+    console.log('listtaskcards run');
+    console.log(project.taskList);
     for (let item of project.taskList) {
         createTaskCard(item);
     }
 }
 
-function displayTaskPage(project, name) {
+function displayTaskPage(project) {
     console.log('displaytaskpage run');
-    console.log(project)
+    console.log(project);
     recreateTemplate();
     const element = document.querySelector('.content');
     element.classList.add('task-area');
     createHeading(project.projectName);
     createBackButton();
     listTaskCards(project);
+    createModal();
+    createAddTaskButton();
 }
 
 export { displayTaskPage };
