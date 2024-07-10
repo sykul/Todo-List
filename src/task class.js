@@ -5,7 +5,7 @@ class TaskObject {
         this.taskComplete = false;
         this.description = "";
         this.dueDate = new Date();
-        this.priority = 'default';
+        this.priority = 'medium';
         this.taskIndex = "id" + Math.random().toString(16).slice(2);
     }
 

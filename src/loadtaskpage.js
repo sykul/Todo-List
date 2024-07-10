@@ -12,6 +12,7 @@ const bodyElement = document.querySelector('body');
 function createModal() {
     const addTaskModal = document.createElement('dialog');
     addTaskModal.classList.add('modal');
+    const activeProject = projects.filter(project => project.isActive)[0];
 
     const modalHeading = document.createElement('label');
     modalHeading.htmlFor = 'modalTextbox';
@@ -35,10 +36,11 @@ function createModal() {
     submitButton.innerText = 'Submit';
     submitButton.addEventListener('click', (e) => {
         if (textBox.checkValidity() === true) {
-            const newProject = new TaskObject(textBox.value);   
-            projects.push(newProject);
+            const tasks = activeProject.taskList;
+            const newTask = new TaskObject(textBox.value);  
+            tasks.push(newTask);
             addToLocalStorage(projects, 'projectArray');
-            displayProjectPage();
+            displayTaskPage(activeProject);
         }
     });
 
@@ -110,6 +112,7 @@ function createTaskCard(taskObject) {
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-card');
     taskCard.setAttribute('id', `${taskObject.taskIndex}`);
+    const activeProject = projects.filter(project => project.isActive)[0];
 
     const left = document.createElement('div');
     left.classList.add('task-left');
@@ -154,16 +157,17 @@ function createTaskCard(taskObject) {
         option.text = val;
         prioritySelector.appendChild(option);
     }
+    prioritySelector.options[1].selected = true;
     const priorityLabel = document.createElement('label');
     priorityLabel.textContent = 'Priority: ';
     priorityLabel.htmlFor = 'prioritySelector';
+    
 
     const deleteButton = document.createElement('button');
     deleteButton.type = 'button';
     deleteButton.classList.add('task-delete-button');
     deleteButton.textContent = 'X';
     deleteButton.addEventListener('click', (e) => {
-        const activeProject = projects.filter(project => project.isActive)[0];
         const tasks = activeProject.taskList;
         const taskID = e.currentTarget.parentNode.parentNode.id;
         activeProject.taskList = tasks.filter(task => task.taskIndex != taskID);
