@@ -128,7 +128,7 @@ function createTaskCard(taskObject) {
     doneSwitch.name = "doneSwitch";
     doneSwitch.classList.add("done-switch");
     doneSwitch.id = `doneSwitch + ${taskObject.taskIndex}`;
-    doneSwitch.addEventListener('input', (e) => {
+    doneSwitch.addEventListener('click', (e) => {
         e.preventDefault();
         const tasks = activeProject.taskList;
         const taskID = e.currentTarget.parentNode.parentNode.parentNode.id;
@@ -144,6 +144,19 @@ function createTaskCard(taskObject) {
     taskHeading.textContent = `${taskObject.taskName}`;
 
     const notes = document.createElement('textarea');
+    notes.name = "notes";
+    notes.classList.add("notes-textbox");
+    notes.id = `notes + ${taskObject.taskIndex}`;
+    notes.addEventListener('input', (e) => {
+        const tasks = activeProject.taskList;
+        const taskID = e.currentTarget.parentNode.parentNode.parentNode.id;
+        const task = tasks.filter(task => task.taskIndex == taskID)[0];
+        task.description = notes.value;
+        console.log(task);
+    });
+    const notesLabel = document.createElement('label');
+    notesLabel.textContent = 'Description: ';
+    notesLabel.htmlFor = 'notes';
 
     const dateSelector = document.createElement('input');
     dateSelector.type = 'date';
