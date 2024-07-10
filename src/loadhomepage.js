@@ -1,5 +1,3 @@
-import { subMilliseconds } from "date-fns";
-import { el } from "date-fns/locale";
 import { ProjectObject } from "./project class";
 import { projects } from "./index"
 import { addToLocalStorage, retrieveFromLocalStorage } from "./localstoragefunctions";
@@ -29,6 +27,23 @@ function createProjectCard(projectObject) {
         displayTaskPage(matchingProject, projectName);
     });
 
+    const deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.classList.add('project-delete-button');
+    deleteButton.textContent = 'X';
+    deleteButton.addEventListener('click', (e) => {
+        const projectID = e.currentTarget.parentNode.id;
+        const indexOfObject = projects.findIndex(project => {
+            return project.projectIndex === projectID;
+        });
+        projects.splice(indexOfObject, 1);
+        console.log(projects);
+        e.stopPropagation();
+        addToLocalStorage(projects, 'projectArray');
+        displayProjectPage();
+    });
+
+    projectCard.appendChild(deleteButton);
     const content = document.querySelector('.content');
     content.appendChild(projectCard);
 }

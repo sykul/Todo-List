@@ -1,6 +1,4 @@
 import { projects } from "./index"
-import { subMilliseconds } from "date-fns";
-import { el } from "date-fns/locale";
 import { addToLocalStorage } from "./localstoragefunctions.js";
 import { displayProjectPage } from './loadhomepage.js';
 import { recreateTemplate } from './ui.js';
@@ -128,12 +126,13 @@ function createTaskCard(taskObject) {
     doneSwitch.name = "doneSwitch";
     doneSwitch.classList.add("done-switch");
     doneSwitch.id = `doneSwitch + ${taskObject.taskIndex}`;
-    doneSwitch.addEventListener('click', (e) => {
+    doneSwitch.addEventListener('input', (e) => {
         e.preventDefault();
         const tasks = activeProject.taskList;
         const taskID = e.currentTarget.parentNode.parentNode.parentNode.id;
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.toggleTaskComplete();
+        addToLocalStorage(projects, 'projectArray');
         console.log(task)
     })
     const doneSwitchLabel = document.createElement('label');
@@ -152,6 +151,7 @@ function createTaskCard(taskObject) {
         const taskID = e.currentTarget.parentNode.parentNode.parentNode.id;
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.description = notes.value;
+        addToLocalStorage(projects, 'projectArray');
         console.log(task);
     });
     const notesLabel = document.createElement('label');
@@ -170,6 +170,7 @@ function createTaskCard(taskObject) {
         const taskID = e.currentTarget.parentNode.parentNode.id;
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.dueDate = dateSelector.value;
+        addToLocalStorage(projects, 'projectArray');
         console.log(projects);
     });
     const dateLabel = document.createElement('label');
@@ -209,6 +210,7 @@ function createTaskCard(taskObject) {
         const tasks = activeProject.taskList;
         const taskID = e.currentTarget.parentNode.parentNode.id;
         activeProject.taskList = tasks.filter(task => task.taskIndex != taskID);
+        addToLocalStorage(projects, 'projectArray');        
         displayTaskPage(activeProject);
     })
 
