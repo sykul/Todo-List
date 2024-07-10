@@ -158,6 +158,14 @@ function createTaskCard(taskObject) {
         prioritySelector.appendChild(option);
     }
     prioritySelector.options[1].selected = true;
+    prioritySelector.addEventListener(
+        'input', (e) => {
+        const tasks = activeProject.taskList;
+        const taskID = e.currentTarget.parentNode.parentNode.id;
+        const task = tasks.filter(task => task.taskIndex == taskID)[0];
+        task.priority = prioritySelector.value;
+        console.log(projects);
+    });
     const priorityLabel = document.createElement('label');
     priorityLabel.textContent = 'Priority: ';
     priorityLabel.htmlFor = 'prioritySelector';
