@@ -127,7 +127,15 @@ function createTaskCard(taskObject) {
     doneSwitch.type = 'checkbox';
     doneSwitch.name = "doneSwitch";
     doneSwitch.classList.add("done-switch");
-    doneSwitch.id = 'doneSwitch';
+    doneSwitch.id = `doneSwitch + ${taskObject.taskIndex}`;
+    doneSwitch.addEventListener('input', (e) => {
+        e.preventDefault();
+        const tasks = activeProject.taskList;
+        const taskID = e.currentTarget.parentNode.parentNode.parentNode.id;
+        const task = tasks.filter(task => task.taskIndex == taskID)[0];
+        task.toggleTaskComplete();
+        console.log(task)
+    })
     const doneSwitchLabel = document.createElement('label');
     doneSwitchLabel.textContent = 'Completed? ';
     doneSwitchLabel.htmlFor = 'doneSwitch';
@@ -142,6 +150,15 @@ function createTaskCard(taskObject) {
     dateSelector.name = "date";
     dateSelector.classList.add("date-selector");
     dateSelector.id = 'date';
+    dateSelector.value = taskObject.dueDate;
+    dateSelector.addEventListener(
+        'input', (e) => {
+        const tasks = activeProject.taskList;
+        const taskID = e.currentTarget.parentNode.parentNode.id;
+        const task = tasks.filter(task => task.taskIndex == taskID)[0];
+        task.dueDate = dateSelector.value;
+        console.log(projects);
+    });
     const dateLabel = document.createElement('label');
     dateLabel.textContent = 'Due: ';
     dateLabel.htmlFor = 'date';

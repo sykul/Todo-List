@@ -1,13 +1,11 @@
 /*  title, description, dueDate, priority, notes, done */
 import './style.css';
-import 'date-fns';
 import { TaskObject } from './task class.js';
 import { ProjectObject } from './project class.js';
 import { displayProjectPage } from './loadhomepage.js';
 import { displayTaskPage } from './loadtaskpage.js';
 import { createTaskCard, toggleAddProjectModal} from './ui.js';
 import { addToLocalStorage, retrieveFromLocalStorage } from './localstoragefunctions.js'
-import { te } from 'date-fns/locale';
 
 const projects = [];
 
