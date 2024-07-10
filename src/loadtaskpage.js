@@ -123,6 +123,9 @@ function createTaskCard(taskObject) {
 
     const doneSwitch = document.createElement('input');
     doneSwitch.type = 'checkbox';
+    if (taskObject.taskComplete === true) {
+        doneSwitch.checked = true;
+    } else { console.log('no')}
     doneSwitch.name = "doneSwitch";
     doneSwitch.classList.add("done-switch");
     doneSwitch.id = `doneSwitch + ${taskObject.taskIndex}`;
@@ -146,6 +149,7 @@ function createTaskCard(taskObject) {
     notes.name = "notes";
     notes.classList.add("notes-textbox");
     notes.id = `notes + ${taskObject.taskIndex}`;
+    notes.value = taskObject.description;
     notes.addEventListener('input', (e) => {
         const tasks = activeProject.taskList;
         const taskID = e.currentTarget.parentNode.parentNode.parentNode.id;
@@ -182,6 +186,7 @@ function createTaskCard(taskObject) {
     prioritySelector.name = "priority";
     prioritySelector.classList.add("priority");
     prioritySelector.id = 'prioritySelector';
+    prioritySelector.value = taskObject.priority;
     for (let val of priorityValues) {
         const option = document.createElement('option');
         option.value = val;
