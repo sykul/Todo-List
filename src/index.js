@@ -10,7 +10,6 @@ if (localStorage.getItem('projectArray')) {
     const loadedProjects = retrieveFromLocalStorage('projectArray');
     projects.length = 0;
     projects.push.apply(projects, loadedProjects);
-    console.log(projects)
 } else {
     projects = []
 }

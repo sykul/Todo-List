@@ -100,7 +100,6 @@ function createBackButton() {
                 object.isActive = false;
             };
         });
-        console.log(projects)
         displayProjectPage();
     })
     document.querySelector('body').prepend(backButton);
@@ -125,7 +124,7 @@ function createTaskCard(taskObject) {
     doneSwitch.type = 'checkbox';
     if (taskObject.taskComplete === true) {
         doneSwitch.checked = true;
-    } else { console.log('no')}
+    };
     doneSwitch.name = "doneSwitch";
     doneSwitch.classList.add("done-switch");
     doneSwitch.id = `doneSwitch + ${taskObject.taskIndex}`;
@@ -136,7 +135,6 @@ function createTaskCard(taskObject) {
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.toggleTaskComplete();
         addToLocalStorage(projects, 'projectArray');
-        console.log(task)
     })
     const doneSwitchLabel = document.createElement('label');
     doneSwitchLabel.textContent = 'Completed? ';
@@ -156,7 +154,6 @@ function createTaskCard(taskObject) {
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.description = notes.value;
         addToLocalStorage(projects, 'projectArray');
-        console.log(task);
     });
     const notesLabel = document.createElement('label');
     notesLabel.textContent = 'Description: ';
@@ -175,7 +172,6 @@ function createTaskCard(taskObject) {
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.dueDate = dateSelector.value;
         addToLocalStorage(projects, 'projectArray');
-        console.log(projects);
     });
     const dateLabel = document.createElement('label');
     dateLabel.textContent = 'Due: ';
@@ -200,7 +196,6 @@ function createTaskCard(taskObject) {
         const taskID = e.currentTarget.parentNode.parentNode.id;
         const task = tasks.filter(task => task.taskIndex == taskID)[0];
         task.priority = prioritySelector.value;
-        console.log(projects);
     });
     const priorityLabel = document.createElement('label');
     priorityLabel.textContent = 'Priority: ';
@@ -241,16 +236,12 @@ function createTaskCard(taskObject) {
 }
 
 function listTaskCards(project) {
-    console.log('listtaskcards run');
-    console.log(project.taskList);
     for (let item of project.taskList) {
         createTaskCard(item);
     }
 }
 
 function displayTaskPage(project) {
-    console.log('displaytaskpage run');
-    console.log(project);
     recreateTemplate();
     const element = document.querySelector('.content');
     element.classList.add('task-area');

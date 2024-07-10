@@ -37,7 +37,6 @@ function createProjectCard(projectObject) {
             return project.projectIndex === projectID;
         });
         projects.splice(indexOfObject, 1);
-        console.log(projects);
         e.stopPropagation();
         addToLocalStorage(projects, 'projectArray');
         displayProjectPage();
